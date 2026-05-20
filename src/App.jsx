@@ -97,8 +97,8 @@ const projects = [
       "Built real-time message sync and optimized performance",
       "Maintained message order during network instability with queuing and retry logic",
     ],
-    github: "https://github.com/imadityameena/quickchat",
-    live: "#",
+    github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
+    live: "https://quick-chat-azure.vercel.app/login",
   },
   {
     name: "ChefAI",
@@ -126,8 +126,8 @@ const projects = [
       "Integrated TMDB API for real-time data and trailers",
       "Managed complex API rate limits with intelligent caching and batching",
     ],
-    github: "https://github.com/imadityameena/the-films",
-    live: "#",
+    github: "https://github.com/imadityameena/Movie-App",
+    live: "https://movie-app-lac-psi.vercel.app/",
   },
   {
     name: "Tomato",
@@ -140,11 +140,11 @@ const projects = [
       "Implemented cart logic with persistent state",
       "Handled complex discount calculations with a robust pricing engine",
     ],
-    github: "https://github.com/imadityameena/tomato",
-    live: "#",
+    github: "https://github.com/imadityameena/Food-delivery",
+    live: "https://food-delivery-project-63r5.vercel.app/",
   },
   {
-    name: "Medicure",
+    name: "Mindcure",
     year: "2024",
     type: "Frontend Only - Mental Health Resources",
     stack: "React, Next.js, Tailwind CSS, Responsive UI",
@@ -154,8 +154,8 @@ const projects = [
       "Created an empathetic, non-clinical UI through user research",
       "Ensured privacy-first design for sensitive user data",
     ],
-    github: "https://github.com/imadityameena/medicure",
-    live: "#",
+    github: "https://github.com/imadityameena/Mental-Health-app",
+    live: "https://mental-health-app-nu-three.vercel.app/",
   },
   {
     name: "Cryptoplace",
@@ -169,7 +169,7 @@ const projects = [
       "Optimized rendering of frequent data updates using React.memo and debouncing",
     ],
     github: "https://github.com/imadityameena/cryptoplace",
-    live: "#",
+    live: "https://cryptoplace-dusky.vercel.app/",
   },
 ];
 
@@ -457,6 +457,38 @@ function App() {
               delay={index * 0.12}
               className="project-card"
             >
+              {/* Space for the project photo */}
+              <div
+                className="project-image-placeholder"
+                style={{
+                  width: "100%",
+                  height: "220px",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  borderRadius: "8px",
+                  marginBottom: "20px",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "rgba(255, 255, 255, 0.3)",
+                  fontSize: "14px",
+                }}
+              >
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : (
+                  <span>[Add {project.name} Image Here]</span>
+                )}
+              </div>
+
               <div className="project-meta">
                 <span>{project.year}</span>
                 <span>{project.type}</span>
