@@ -16,7 +16,7 @@ import {
   Code2,
   Database,
   ExternalLink,
-  Github,
+  GitBranch,
   GraduationCap,
   Mail,
   MapPin,
@@ -408,7 +408,7 @@ function App() {
                       aria-label={`GitHub link for ${project.name}`}
                       style={{ color: "inherit" }}
                     >
-                      <Github size={18} />
+                      <GitBranch size={18} />
                     </a>
                   )}
                   {project.live && (
