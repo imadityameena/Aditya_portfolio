@@ -27,6 +27,14 @@ import {
   X,
 } from "lucide-react";
 
+import prescriptoImg from "./assets/Prescripto.png";
+import quickchatImg from "./assets/quickchat.png";
+import chefaiImg from "./assets/chefAi.png";
+import tomatoImg from "./assets/tomato.png";
+import mindcureImg from "./assets/mindcure.png";
+import cryptoplaceImg from "./assets/cryptoplace.png";
+import thefilmsImg from "./assets/thefilms.png";
+
 const profile = {
   name: "Aditya Meena",
   title: "Full-Stack Developer",
@@ -75,6 +83,7 @@ const projects = [
     name: "Prescripto",
     year: "2025",
     type: "Doctor Appointment System",
+    image: prescriptoImg,
     stack: "React, Node, Express, MongoDB, JWT, Razorpay, Tailwind",
     impact:
       "3-role healthcare platform with conflict-free bookings and dual payment gateways.",
@@ -90,6 +99,7 @@ const projects = [
     name: "QuickChat",
     year: "2024",
     type: "Real-time Messaging App",
+    image: quickchatImg,
     stack: "React, Socket.io, Node.js, Express",
     impact: "Eliminates delay in team communication with instant messaging.",
     points: [
@@ -104,6 +114,7 @@ const projects = [
     name: "ChefAI",
     year: "2026",
     type: "AI-Powered Meal & Pantry Planner",
+    image: chefaiImg,
     stack: "React, Node, Express, PostgreSQL, Gemini AI, JWT",
     impact:
       "Context-aware recipe generation from real pantry inventory and dietary preferences.",
@@ -119,6 +130,7 @@ const projects = [
     name: "The Films",
     year: "2024",
     type: "Frontend Only - Movie Discovery Platform",
+    image: thefilmsImg,
     stack: "React, Tailwind CSS, Redux, TMDB API",
     impact: "Makes movie discovery easier with personalized recommendations.",
     points: [
@@ -133,6 +145,7 @@ const projects = [
     name: "Tomato",
     year: "2024",
     type: "Frontend Only - Food Ordering Platform",
+    image: tomatoImg,
     stack: "Next.js, React, Tailwind CSS, Figma",
     impact: "Streamlines food ordering with an intuitive checkout process.",
     points: [
@@ -147,6 +160,7 @@ const projects = [
     name: "Mindcure",
     year: "2024",
     type: "Frontend Only - Mental Health Resources",
+    image: mindcureImg,
     stack: "React, Next.js, Tailwind CSS, Responsive UI",
     impact: "Provides accessible mental health resources for students.",
     points: [
@@ -161,6 +175,7 @@ const projects = [
     name: "Cryptoplace",
     year: "2024",
     type: "Frontend Only - Crypto Market Tracker",
+    image: cryptoplaceImg,
     stack: "React, CoinGecko API, React Router, Google Charts",
     impact: "Simplifies crypto market tracking with real-time price updates.",
     points: [
