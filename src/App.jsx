@@ -160,21 +160,21 @@ const projects = [
     github: "https://github.com/imadityameena/Food-delivery",
     live: "https://food-delivery-project-63r5.vercel.app/",
   },
-  {
-    name: "Mindcure",
-    year: "2024",
-    type: "Frontend Only - Mental Health Resources",
-    image: mindcureImg,
-    stack: "React, Next.js, Tailwind CSS, Responsive UI",
-    impact: "Provides accessible mental health resources for students.",
-    points: [
-      "Designed and built complete interface with Next.js",
-      "Created an empathetic, non-clinical UI through user research",
-      "Ensured privacy-first design for sensitive user data",
-    ],
-    github: "https://github.com/imadityameena/Mental-Health-app",
-    live: "https://mental-health-app-nu-three.vercel.app/",
-  },
+  // {
+  //   name: "Mindcure",
+  //   year: "2024",
+  //   type: "Frontend Only - Mental Health Resources",
+  //   image: mindcureImg,
+  //   stack: "React, Next.js, Tailwind CSS, Responsive UI",
+  //   impact: "Provides accessible mental health resources for students.",
+  //   points: [
+  //     "Designed and built complete interface with Next.js",
+  //     "Created an empathetic, non-clinical UI through user research",
+  //     "Ensured privacy-first design for sensitive user data",
+  //   ],
+  //   github: "https://github.com/imadityameena/Mental-Health-app",
+  //   live: "https://mental-health-app-nu-three.vercel.app/",
+  // },
   {
     name: "Cryptoplace",
     year: "2024",
@@ -493,7 +493,11 @@ function App() {
               delay={index * 0.12}
               className="project-card"
             >
-              <img className="project-image" src={project.image} alt={`${project.name} project preview`} />
+              <img
+                className="project-image"
+                src={project.image}
+                alt={`${project.name} project preview`}
+              />
               <div className="project-meta">
                 <span>{project.year}</span>
                 <span>{project.type}</span>
