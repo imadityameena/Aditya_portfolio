@@ -220,7 +220,7 @@ button {
 
 .hero-panel {
   position: relative;
-  min-height: 560px;
+  min-height: 600px;
   perspective: 1200px;
 }
 
@@ -269,7 +269,7 @@ button {
 .terminal-top {
   display: flex;
   gap: 8px;
-  padding-bottom: 46px;
+  padding-bottom: 5px;
 }
 
 .terminal-top span {
@@ -451,13 +451,36 @@ button {
   transition: 320ms ease;
 }
 
+.project-image {
+  display: block;
+  width: 100%;
+  height: 190px;
+  margin-bottom: 24px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  filter: saturate(0.85);
+  transition: 320ms ease;
+}
+
+.project-card:hover .project-image {
+  filter: saturate(1);
+  transform: scale(1.015);
+}
+
 .project-card::before {
   position: absolute;
   inset: auto -20% -46% -20%;
   height: 65%;
   content: '';
+  pointer-events: none;
   background: radial-gradient(circle, rgba(255,255,255,0.13), transparent 62%);
   transition: 320ms ease;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover {
@@ -526,6 +549,33 @@ button {
 .project-card li svg {
   flex: 0 0 auto;
   margin-top: 2px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #e9e7de;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.84rem;
+  transition: 220ms ease;
+}
+
+.project-links a:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: var(--ink);
+  color: #050505;
 }
 
 .skills-section {
@@ -664,12 +714,17 @@ button {
   }
 
   .hero-panel {
-    min-height: 470px;
+    height: max-content;
+    min-height: 0;
   }
 
   .terminal-card {
-    inset: 50px 0 0;
-    margin: auto;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: max-content;
+    min-height: 0;
+    margin: 50px 0 0;
   }
 
   .project-grid,
@@ -695,11 +750,14 @@ button {
   }
 
   .hero-panel {
-    min-height: 420px;
+    height: max-content;
+    min-height: 0;
   }
 
   .terminal-card {
-    min-height: auto;
+    height: max-content;
+    min-height: 0;
+    margin-top: 30px;
   }
 
   .terminal-grid {
