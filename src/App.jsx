@@ -554,7 +554,10 @@ function App() {
           <GraduationCap size={24} />
           <p className="section-kicker">Education</p>
           <h2>Indian Institute of Information Technology Ranchi</h2>
-          <p>B.Tech in Computer Science and Engineering, 2023 - 2027</p>
+          <p>
+            B.Tech in Computer Science and Engineering, 2023 - 2027 |{" "}
+            <strong>CGPA: 7.52 /10</strong>
+          </p>
         </Reveal>
         <Reveal delay={0.1} className="proof-card">
           <Trophy size={24} />

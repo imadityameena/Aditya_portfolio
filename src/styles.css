@@ -108,7 +108,9 @@ button {
 }
 
 .wordmark {
-  font-size: 0.83rem;
+  width: 56px;
+  height: 56px;
+  font-size: 0.85rem;
   font-weight: 800;
 }
 
