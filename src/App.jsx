@@ -34,6 +34,7 @@ import thefilmsImg from "./assets/thefilms.png";
 import tomatoImg from "./assets/tomato.png";
 import mindcureImg from "./assets/mindcure.png";
 import cryptoplaceImg from "./assets/cryptoplace.png";
+import supportaiImg from "./assets/supportaiImg.png";
 
 const profile = {
   name: "Aditya Meena",
@@ -45,7 +46,7 @@ const profile = {
   leetcode: "https://leetcode.com/u/imadityameena/",
   codolio: "https://codolio.com/profile/huppyyyyy",
   resume:
-    "https://drive.google.com/file/d/1ud-NEHx0hbjwKFyKoTVDBQIb7l2g7P6J/view?usp=drive_link",
+    "https://drive.google.com/file/d/1fakrRZxv6Eziaza4SXxwUHpYqMa48jU_/view?usp=drive_link",
   summary:
     "Full-stack developer with production internship experience building MERN and PostgreSQL applications, AI integrations, REST APIs, and polished web systems.",
 };
@@ -53,7 +54,7 @@ const profile = {
 const stats = [
   ["6+", "months production internship"],
   ["5+", "full-stack apps shipped"],
-  ["400+", "DSA problems solved"],
+  ["500+", "DSA problems solved"],
   ["950+", "GitHub contributions in 2025"],
 ];
 
@@ -83,6 +84,24 @@ const skills = [
 ];
 
 const projects = [
+   {
+    name: "SupportAI",
+    year: "2026",
+    type: "Multi-tenant AI Customer Support",
+    image: supportaiImg,
+    stack:
+      "Next.js, React, TypeScript, MongoDB, Mongoose, Gemini, Scalekit, Tailwind",
+    impact:
+      "Turns any website into an AI-staffed support desk via an embeddable widget — deployed with a single script tag, no code required.",
+    points: [
+      "Multi-tenant architecture keeps every business's FAQs, policies, and chatbot config fully isolated",
+      "Knowledge-grounded prompting keeps Gemini answering only from verified business data, no hallucinated policies",
+      "Scalekit-authenticated dashboard with token-based sessions and route protection",
+      "CORS-enabled chat API with cached MongoDB connections and automatic retry on AI failures",
+    ],
+    github: "https://github.com/imadityameena/SupportAI",
+    live: "https://support-ai-self.vercel.app/",
+  },
   {
     name: "Prescripto",
     year: "2025",
@@ -92,9 +111,9 @@ const projects = [
     impact:
       "3-role healthcare platform with conflict-free bookings and dual payment gateways.",
     points: [
-      "Patient, doctor, and admin dashboards",
-      "Slot validation for reliable scheduling",
-      "Stripe and Razorpay payments",
+      "Separate patient, doctor, and admin workflows with role-aware dashboards",
+      "Validated appointment slots prevent conflicts and keep availability reliable",
+      "Stripe and Razorpay payment flows support secure, flexible checkout",
     ],
     github: "https://github.com/imadityameena/Prescripto_Hospital_app",
     live: "https://prescripto-hospital-app.vercel.app/",
@@ -107,9 +126,9 @@ const projects = [
     stack: "React, Socket.io, Node.js, Express",
     impact: "Eliminates delay in team communication with instant messaging.",
     points: [
-      "Implemented WebSocket architecture using Socket.io",
-      "Built real-time message sync and optimized performance",
-      "Maintained message order during network instability with queuing and retry logic",
+      "Socket.io WebSocket architecture delivers messages instantly across connected clients",
+      "Real-time message synchronization keeps conversations consistent without refreshes",
+      "Queueing and retry logic preserves message order during unstable network conditions",
     ],
     github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
     live: "https://quick-chat-azure.vercel.app/login",
@@ -123,9 +142,9 @@ const projects = [
     impact:
       "Context-aware recipe generation from real pantry inventory and dietary preferences.",
     points: [
-      "Inventory-aware meal plans",
-      "MVC REST API with secure auth",
-      "Automated shopping list generation",
+      "Gemini generates meal plans from pantry inventory and individual dietary preferences",
+      "MVC REST API with JWT authentication separates secure application concerns",
+      "Automated shopping lists turn selected recipes into an actionable grocery plan",
     ],
     github: "https://github.com/imadityameena/chefai",
     live: "https://chef-ai-xqr8.vercel.app/",
@@ -138,9 +157,9 @@ const projects = [
     stack: "React, Tailwind CSS, Redux, TMDB API",
     impact: "Makes movie discovery easier with personalized recommendations.",
     points: [
-      "Built frontend with Redux state management",
-      "Integrated TMDB API for real-time data and trailers",
-      "Managed complex API rate limits with intelligent caching and batching",
+      "Redux state management keeps movie discovery, filters, and watch flows predictable",
+      "TMDB integration provides current movie details, recommendations, and trailers",
+      "Caching and request batching reduce duplicate calls while handling API rate limits",
     ],
     github: "https://github.com/imadityameena/Movie-App",
     live: "https://movie-app-lac-psi.vercel.app/",
@@ -153,9 +172,9 @@ const projects = [
     stack: "Next.js, React, Tailwind CSS, Figma",
     impact: "Streamlines food ordering with an intuitive checkout process.",
     points: [
-      "Built complete UI/UX from Figma designs",
-      "Implemented cart logic with persistent state",
-      "Handled complex discount calculations with a robust pricing engine",
+      "Translated complete Figma flows into a responsive, production-ready ordering interface",
+      "Persistent cart state keeps selected items available as customers browse the menu",
+      "Pricing logic applies discounts consistently across cart and checkout totals",
     ],
     github: "https://github.com/imadityameena/Food-delivery",
     live: "https://food-delivery-project-63r5.vercel.app/",
@@ -183,9 +202,9 @@ const projects = [
     stack: "React, CoinGecko API, React Router, Google Charts",
     impact: "Simplifies crypto market tracking with real-time price updates.",
     points: [
-      "Integrated CoinGecko API and built dynamic charts",
-      "Implemented efficient search across 1000+ cryptocurrencies",
-      "Optimized rendering of frequent data updates using React.memo and debouncing",
+      "CoinGecko integration powers current market data and interactive price charts",
+      "Debounced search makes it fast to find assets across more than 1,000 cryptocurrencies",
+      "React.memo and controlled updates reduce unnecessary renders during frequent price changes",
     ],
     github: "https://github.com/imadityameena/cryptoplace",
     live: "https://cryptoplace-dusky.vercel.app/",

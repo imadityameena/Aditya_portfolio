@@ -447,6 +447,8 @@ button {
 
 .project-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 470px;
   padding: 26px;
   overflow: hidden;
@@ -557,7 +559,8 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: auto;
+  padding-top: 28px;
 }
 
 .project-links a {
