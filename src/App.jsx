@@ -220,10 +220,10 @@ const work = [
 ];
 
 const achievements = [
-  "Peak ratings: 1485 LeetCode and 1445 CodeChef",
-  "Top 3 in college at Smart India Hackathon",
+  "Peak ratings: 1752 LeetCode and 1580 CodeChef",
+  "Top 3 in Ideathon 2024, IIIT Ranchi",
   "Coordinator, Software Development Wing, IIIT Ranchi",
-  "Generative AI Fundamentals, LinkedIn Learning 2025",
+  "950+ github contributions in 2025",
 ];
 
 function useMouseGlow() {
