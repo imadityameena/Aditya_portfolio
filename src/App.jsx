@@ -595,7 +595,12 @@ function App() {
           <p className="section-kicker">Available for</p>
           <h2>Internships, full-stack work, and ambitious product builds.</h2>
         </div>
-        <MagneticLink href={`mailto:${profile.email}`} className="primary-cta">
+        <MagneticLink
+          href={`mailto:${profile.email}?subject=Let%27s%20work%20together`}
+          target="_blank"
+          rel="noreferrer"
+          className="primary-cta"
+        >
           Let&apos;s talk <ArrowUpRight size={18} />
         </MagneticLink>
       </footer>
