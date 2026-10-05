@@ -220,7 +220,7 @@ const work = [
 ];
 
 const achievements = [
-  "Peak ratings: 1752 LeetCode and 1580 CodeChef",
+  "Peak ratings: 1829 LeetCode and 1601(3-star) CodeChef",
   "Top 3 in Ideathon 2024, IIIT Ranchi",
   "Coordinator, Software Development Wing, IIIT Ranchi",
   "950+ github contributions in 2025",
