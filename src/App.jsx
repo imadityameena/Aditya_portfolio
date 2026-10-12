@@ -46,7 +46,7 @@ const profile = {
   leetcode: "https://leetcode.com/u/imadityameena/",
   codolio: "https://codolio.com/profile/huppyyyyy",
   resume:
-    "https://drive.google.com/file/d/1fakrRZxv6Eziaza4SXxwUHpYqMa48jU_/view?usp=drive_link",
+    "https://drive.google.com/file/d/105roZKDf2kzwRuC8T1hDc9YCFuFW8R1F/view?usp=sharing",
   summary:
     "Full-stack developer with production internship experience building MERN and PostgreSQL applications, AI integrations, REST APIs, and polished web systems.",
 };
@@ -211,12 +211,32 @@ const projects = [
   },
 ];
 
-const work = [
-  "Independently developed 3 full-stack MERN applications and contributed to 2 collaborative production projects.",
-  "Built a Smart Compliance system processing 50+ CSV records to detect license expiry and violations.",
-  "Developed a file conversion platform supporting 50+ formats and resolved SSL/TLS plus Cloudflare production issues.",
-  "Engineered a tutoring platform with bookings, assignments, payments, and an admin panel.",
-  "Optimized an AI-powered clinic system and implemented 15+ UI fixes across a community platform.",
+const experiences = [
+  {
+    company: "Draviya",
+    website: "https://draviya.com",
+    role: "SWE Intern",
+    location: "India",
+    dates: "Jan 2026 - Mar 2026",
+    points: [
+      "Architected a high-throughput FinTech exchange with a hybrid ledger system using PostgreSQL and on-chain logic.",
+      "Developed event-driven settlement logic to orchestrate atomic, real-time data flow between the ledger and PostgreSQL.",
+      "Established KYC/AML compliance pipelines and secure authentication flows for the initial MVP release.",
+    ],
+  },
+  {
+    company: "Coderoofs IT Solutions",
+    role: "SWE Intern",
+    location: "Remote",
+    dates: "May 2025 - Nov 2025",
+    points: [
+      "Independently developed 3 full-stack MERN applications and contributed to 2 collaborative production projects.",
+      "Built a Smart Compliance system processing 50+ CSV records to detect license expiry and violations.",
+      "Developed a file conversion platform supporting 50+ formats and resolved SSL/TLS plus Cloudflare production issues.",
+      "Engineered a tutoring platform with bookings, assignments, payments, and an admin panel.",
+      "Optimized an AI-powered clinic system and implemented 15+ UI fixes across a community platform.",
+    ],
+  },
 ];
 
 const achievements = [
@@ -289,6 +309,64 @@ function MagneticLink({ href, children, className = "", ...props }) {
     >
       {children}
     </motion.a>
+  );
+}
+
+function ExperienceTimeline() {
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 78%", "end 30%"],
+  });
+  const ropeProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.35,
+  });
+
+  return (
+    <div ref={timelineRef} className="experience-list">
+      <div className="experience-rope" aria-hidden="true">
+        <motion.div className="experience-rope-fill" style={{ scaleY: ropeProgress }} />
+      </div>
+      {experiences.map((experience, experienceIndex) => (
+        <article className="timeline-card" key={experience.company}>
+          <span className="timeline-knot" aria-hidden="true" />
+          <div className="timeline-head">
+            <div>
+              <h3>
+                {experience.website ? (
+                  <a href={experience.website} target="_blank" rel="noreferrer">
+                    {experience.company} <ArrowUpRight size={18} />
+                  </a>
+                ) : (
+                  experience.company
+                )}
+              </h3>
+              <p>{experience.role}, {experience.location}</p>
+            </div>
+            <span>
+              <CalendarDays size={15} /> {experience.dates}
+            </span>
+          </div>
+          <div className="timeline-list">
+            {experience.points.map((item, index) => (
+              <motion.div
+                key={item}
+                className="timeline-item"
+                initial={{ opacity: 0, x: 18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (experienceIndex * 0.12) + (index * 0.07) }}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }
 
@@ -465,38 +543,12 @@ function App() {
         </motion.div>
       </section>
 
-      <section id="work" className="section two-column">
+      <section id="work" className="section experience-section">
         <Reveal>
           <p className="section-kicker">Experience</p>
-          <h2>
-            Built production systems, fixed real outages, and shipped fast.
-          </h2>
         </Reveal>
-        <Reveal delay={0.1} className="timeline-card">
-          <div className="timeline-head">
-            <div>
-              <h3>Coderoofs IT Solutions</h3>
-              <p>SWE Intern, Remote</p>
-            </div>
-            <span>
-              <CalendarDays size={15} /> May 2025 - Nov 2025
-            </span>
-          </div>
-          <div className="timeline-list">
-            {work.map((item, index) => (
-              <motion.div
-                key={item}
-                className="timeline-item"
-                initial={{ opacity: 0, x: 18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.07 }}
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{item}</p>
-              </motion.div>
-            ))}
-          </div>
+        <Reveal delay={0.1}>
+          <ExperienceTimeline />
         </Reveal>
       </section>
 

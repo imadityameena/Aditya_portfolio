@@ -367,6 +367,14 @@ button {
   gap: 46px;
 }
 
+.experience-section {
+  display: block;
+}
+
+.experience-section > .reveal:first-child {
+  margin-bottom: 34px;
+}
+
 .section h2 {
   margin: 12px 0 0;
   font-size: clamp(2.3rem, 5vw, 5rem);
@@ -378,8 +386,62 @@ button {
   margin-bottom: 34px;
 }
 
+.experience-list {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding-left: 34px;
+}
+
+.experience-rope {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.experience-rope-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, #f7f7f2, rgba(247, 247, 242, 0.28));
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.32);
+}
+
+.timeline-knot {
+  position: absolute;
+  top: 28px;
+  left: -34px;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border: 3px solid #050505;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--line), 0 0 18px rgba(255, 255, 255, 0.3);
+}
+
 .timeline-card {
-  padding: 26px;
+  position: relative;
+  padding: 22px 24px;
+  transition: 260ms ease;
+}
+
+.timeline-card:first-child {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), var(--softer));
+}
+
+.timeline-card:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  transform: translateY(-3px);
 }
 
 .timeline-head {
@@ -396,6 +458,22 @@ button {
 .skill-card h3 {
   margin: 0;
   font-size: 1.35rem;
+}
+
+.timeline-head h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-head h3 a svg {
+  color: var(--muted);
+  transition: 220ms ease;
+}
+
+.timeline-head h3 a:hover svg {
+  color: var(--ink);
+  transform: translate(2px, -2px);
 }
 
 .timeline-head p,
@@ -771,6 +849,18 @@ button {
 
   .timeline-head {
     display: grid;
+  }
+
+  .experience-list {
+    padding-left: 28px;
+  }
+
+  .experience-rope {
+    left: 5px;
+  }
+
+  .timeline-knot {
+    left: -28px;
   }
 
   .project-card {
