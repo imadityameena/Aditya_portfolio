@@ -46,7 +46,7 @@ const profile = {
   leetcode: "https://leetcode.com/u/imadityameena/",
   codolio: "https://codolio.com/profile/huppyyyyy",
   resume:
-    "https://drive.google.com/file/d/105roZKDf2kzwRuC8T1hDc9YCFuFW8R1F/view?usp=sharing",
+    "https://drive.google.com/file/d/1QeEDkAqHeIunOkBjbTqN_HN8sxsOWA4B/view?usp=sharing",
   summary:
     "Full-stack developer with production internship experience building MERN and PostgreSQL applications, AI integrations, REST APIs, and polished web systems.",
 };
