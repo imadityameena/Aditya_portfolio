@@ -545,6 +545,46 @@ button {
   transition: 320ms ease;
 }
 
+.building-section {
+  padding-top: 0;
+}
+
+.building-card {
+  grid-column: 1 / -1;
+  max-width: 640px;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  min-height: 30px;
+  margin-bottom: 16px;
+  padding: 0 10px;
+  border: 1px solid rgba(247, 247, 242, 0.25);
+  border-radius: 999px;
+  color: #f7f7f2;
+  background: rgba(247, 247, 242, 0.08);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b7ff6a;
+  box-shadow: 0 0 12px rgba(183, 255, 106, 0.8);
+}
+
+.project-status.maintenance span {
+  background: #ffd166;
+  box-shadow: 0 0 12px rgba(255, 209, 102, 0.8);
+}
+
 .project-card:hover .project-image {
   filter: saturate(1);
   transform: scale(1.015);

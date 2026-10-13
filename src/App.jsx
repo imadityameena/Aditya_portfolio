@@ -84,7 +84,7 @@ const skills = [
 ];
 
 const projects = [
-   {
+  {
     name: "SupportAI",
     year: "2026",
     type: "Multi-tenant AI Customer Support",
@@ -118,21 +118,6 @@ const projects = [
     github: "https://github.com/imadityameena/Prescripto_Hospital_app",
     live: "https://prescripto-hospital-app.vercel.app/",
   },
-  //{
-    // name: "QuickChat",
-    // year: "2024",
-    // type: "Real-time Messaging App",
-    // image: quickchatImg,
-    // stack: "React, Socket.io, Node.js, Express",
-    // impact: "Eliminates delay in team communication with instant messaging.",
-    // points: [
-    //   "Socket.io WebSocket architecture delivers messages instantly across connected clients",
-    //   "Real-time message synchronization keeps conversations consistent without refreshes",
-    //   "Queueing and retry logic preserves message order during unstable network conditions",
-    // ],
-    // github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
-    // live: "https://quick-chat-azure.vercel.app/login",
-  //},
   {
     name: "ChefAI",
     year: "2026",
@@ -208,6 +193,25 @@ const projects = [
     ],
     github: "https://github.com/imadityameena/cryptoplace",
     live: "https://cryptoplace-dusky.vercel.app/",
+  },
+];
+
+const buildingProjects = [
+  {
+    name: "QuickChat",
+    status: "Under maintenance",
+    year: "2024",
+    type: "Real-time Messaging App",
+    image: quickchatImg,
+    stack: "React, Socket.io, Node.js, Express",
+    impact: "Eliminates delay in team communication with instant messaging.",
+    points: [
+      "Socket.io WebSocket architecture delivers messages instantly across connected clients",
+      "Real-time message synchronization keeps conversations consistent without refreshes",
+      "Queueing and retry logic preserves message order during unstable network conditions",
+    ],
+    github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
+    live: "https://quick-chat-azure.vercel.app/login",
   },
 ];
 
@@ -594,6 +598,53 @@ function App() {
                     Live demo <ArrowUpRight size={15} />
                   </a>
                 )}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="section building-section">
+        <Reveal className="section-heading">
+          <p className="section-kicker">Active projects</p>
+          <h2>Currently building and under maintenance.</h2>
+        </Reveal>
+        <div className="project-grid">
+          {buildingProjects.map((project, index) => (
+            <Reveal
+              key={project.name}
+              delay={index * 0.12}
+              className="project-card building-card"
+            >
+              <div className={`project-status ${project.status === "Under maintenance" ? "maintenance" : ""}`}>
+                <span /> {project.status}
+              </div>
+              <img
+                className="project-image"
+                src={project.image}
+                alt={`${project.name} project preview`}
+              />
+              <div className="project-meta">
+                <span>{project.year}</span>
+                <span>{project.type}</span>
+              </div>
+              <h3>{project.name}</h3>
+              <p className="project-impact">{project.impact}</p>
+              <p className="stack">{project.stack}</p>
+              <ul>
+                {project.points.map((point) => (
+                  <li key={point}>
+                    <BadgeCheck size={16} /> {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="project-links">
+                <a href={project.github} target="_blank" rel="noreferrer">
+                  <SiGithub size={16} /> GitHub <ArrowUpRight size={15} />
+                </a>
+                <a href={project.live} target="_blank" rel="noreferrer">
+                  Live demo <ArrowUpRight size={15} />
+                </a>
               </div>
             </Reveal>
           ))}
