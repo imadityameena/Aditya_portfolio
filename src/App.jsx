@@ -52,7 +52,7 @@ const profile = {
 };
 
 const stats = [
-  ["6+", "months production internship"],
+  ["9+", "months production internship"],
   ["5+", "full-stack apps shipped"],
   ["500+", "DSA problems solved"],
   ["950+", "GitHub contributions in 2025"],
