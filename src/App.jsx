@@ -13,6 +13,7 @@ import {
   BrainCircuit,
   BriefcaseBusiness,
   CalendarDays,
+  Cloud,
   Code2,
   FileText,
   Database,
@@ -20,21 +21,24 @@ import {
   Mail,
   MapPin,
   Menu,
+  RefreshCw,
+  Link2,
   Server,
+  ShieldCheck,
   Sparkles,
   Trophy,
   X,
 } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
 import { SiGithub, SiLeetcode } from "react-icons/si";
-import prescriptoImg from "./assets/Prescripto.png";
-import quickchatImg from "./assets/quickchat.png";
-import chefaiImg from "./assets/chefAi.png";
-import thefilmsImg from "./assets/thefilms.png";
-import tomatoImg from "./assets/tomato.png";
-import mindcureImg from "./assets/mindcure.png";
-import cryptoplaceImg from "./assets/cryptoplace.png";
-import supportaiImg from "./assets/supportaiImg.png";
+import prescriptoImg from "./assets/Prescripto.webp";
+import quickchatImg from "./assets/quickchat.webp";
+import chefaiImg from "./assets/chefAi.webp";
+import thefilmsImg from "./assets/thefilms.webp";
+import tomatoImg from "./assets/tomato.webp";
+// import mindcureImg from "./assets/mindcure.png"; // re-enable with the Mindcure project
+import cryptoplaceImg from "./assets/cryptoplace.webp";
+import supportaiImg from "./assets/supportaiImg.webp";
 
 const profile = {
   name: "Aditya Meena",
@@ -58,7 +62,7 @@ const stats = [
   ["950+", "GitHub contributions in 2025"],
 ];
 
-const navItems = ["Work", "Projects", "Skills", "Achievements"];
+const navItems = ["Work", "Case study", "Projects", "Skills", "Achievements"];
 
 const skills = [
   {
@@ -69,18 +73,51 @@ const skills = [
   {
     icon: Sparkles,
     label: "Frontend",
-    items: ["React.js", "Next.js", "Tailwind CSS"],
+    items: ["React.js", "Next.js", "Tailwind CSS", "Redux", "Framer Motion"],
   },
   {
     icon: Server,
     label: "Backend",
-    items: ["Node.js", "Express.js", "REST APIs", "MVC"],
+    items: ["Node.js", "Express.js", "REST APIs", "Microservices", "MVC", "Flask"],
   },
   {
     icon: Database,
-    label: "Data + AI",
-    items: ["MongoDB", "PostgreSQL", "OpenAI API", "Gemini AI"],
+    label: "Databases",
+    items: ["PostgreSQL", "MongoDB", "Mongoose", "Indexing & query tuning"],
   },
+  {
+    icon: BrainCircuit,
+    label: "AI / LLMs",
+    items: ["RAG", "LangChain", "LangGraph", "OpenAI API", "Gemini AI"],
+  },
+  {
+    icon: Cloud,
+    label: "Cloud & Tools",
+    items: ["Git", "GitHub", "Docker", "AWS", "CI/CD", "Cloudinary"],
+  },
+];
+
+const coreCS = [
+  "Data Structures & Algorithms",
+  "Operating Systems",
+  "DBMS",
+  "Computer Networks",
+  "Distributed Systems",
+];
+
+const tickerItems = [
+  "React",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "MongoDB",
+  "REST APIs",
+  "LangChain",
+  "Gemini AI",
+  "OpenAI API",
+  "Docker",
+  "Competitive Programming",
+  "System Design",
 ];
 
 const projects = [
@@ -107,13 +144,13 @@ const projects = [
     year: "2025",
     type: "Doctor Appointment System",
     image: prescriptoImg,
-    stack: "React, Node, Express, MongoDB, JWT, Razorpay, Tailwind",
+    stack: "React, Node, Express, MongoDB, JWT, Stripe, Razorpay, Tailwind",
     impact:
       "3-role healthcare platform with conflict-free bookings and dual payment gateways.",
     points: [
-      "Separate patient, doctor, and admin workflows with role-aware dashboards",
-      "Validated appointment slots prevent conflicts and keep availability reliable",
-      "Stripe and Razorpay payment flows support secure, flexible checkout",
+      "JWT authentication with role-based access control across patient, doctor, and admin dashboards",
+      "Server-side slot validation and availability checks prevent double-booking",
+      "Stripe and Razorpay checkout with server-side payment verification and failure handling",
     ],
     github: "https://github.com/imadityameena/Prescripto_Hospital_app",
     live: "https://prescripto-hospital-app.vercel.app/",
@@ -168,7 +205,7 @@ const projects = [
   //   name: "Mindcure",
   //   year: "2024",
   //   type: "Frontend Only - Mental Health Resources",
-  //   image: mindcureImg,
+  //   image: mindcureImg, // also uncomment the import above
   //   stack: "React, Next.js, Tailwind CSS, Responsive UI",
   //   impact: "Provides accessible mental health resources for students.",
   //   points: [
@@ -235,19 +272,70 @@ const experiences = [
     dates: "May 2025 - Nov 2025",
     points: [
       "Independently developed 3 full-stack MERN applications and contributed to 2 collaborative production projects.",
-      "Built a Smart Compliance system processing 50+ CSV records to detect license expiry and violations.",
-      "Developed a file conversion platform supporting 50+ formats and resolved SSL/TLS plus Cloudflare production issues.",
-      "Engineered a tutoring platform with bookings, assignments, payments, and an admin panel.",
-      "Optimized an AI-powered clinic system and implemented 15+ UI fixes across a community platform.",
+      "Developed a file conversion platform supporting 50+ formats; resolved a production outage by renewing SSL/TLS certificates and fixing Cloudflare configuration.",
+      "Engineered a tutoring platform with booking, assignments, payments, and admin tools; added pagination that cut API response time by ~2 seconds.",
+      "Optimized MongoDB queries and indexed frequently accessed fields, reducing database query latency by ~35%.",
+      "Standardized the dark-theme UI of an AI-powered clinic system for a consistent interface.",
     ],
   },
 ];
 
+// Draviya case study. Kept to architecture level on purpose: the company's
+// product, pricing, and legal design are under NDA and must not appear here.
+const draviyaFlow = [
+  {
+    icon: ShieldCheck,
+    title: "Identity gate",
+    body: "Auth + KYC/AML checks run before an account can trade.",
+  },
+  {
+    icon: Server,
+    title: "Trade API",
+    body: "Validates the order and the user's available balance.",
+  },
+  {
+    icon: Database,
+    title: "PostgreSQL ledger",
+    body: "Balance change and a pending settlement event are written in one transaction.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Settlement worker",
+    body: "Picks up pending events and submits them on-chain.",
+  },
+  {
+    icon: Link2,
+    title: "On-chain logic",
+    body: "Final record of ownership; confirmation is written back to the ledger.",
+  },
+];
+
+const draviyaDecisions = [
+  {
+    title: "Ledger first, chain second",
+    body: "Users see balances update instantly from PostgreSQL, while the chain settles in the background. The app stays fast even when the network is slow.",
+  },
+  {
+    title: "One transaction, no drift",
+    body: "The balance update and its settlement event commit together. If either fails, both roll back, so the ledger never shows a trade that was never queued for settlement.",
+  },
+  {
+    title: "Events make retries safe",
+    body: "Settlement runs off events, not inline in the request. A failed on-chain call is retried from the pending event instead of being lost or applied twice.",
+  },
+  {
+    title: "Compliance at the door",
+    body: "KYC/AML runs before trading is unlocked, so every ledger entry belongs to a verified identity from day one.",
+  },
+];
+
 const achievements = [
-  "Peak ratings: 1829 LeetCode and 1601(3-star) CodeChef",
+  "Peak ratings: 1829 on LeetCode and 1601 (3-star) on CodeChef",
+  "Ranked 477th of 19K+ participants in CodeChef Starters 238",
+  "500+ DSA problems solved across platforms",
+  "950+ GitHub contributions in 2025",
   "Top 3 in Ideathon 2024, IIIT Ranchi",
   "Coordinator, Software Development Wing, IIIT Ranchi",
-  "950+ github contributions in 2025",
 ];
 
 function useMouseGlow() {
@@ -419,7 +507,7 @@ function App() {
           {navItems.map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`#${item.toLowerCase().replace(" ", "-")}`}
               onClick={() => setMenuOpen(false)}
             >
               {item}
@@ -519,31 +607,9 @@ function App() {
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         >
-          {[
-            "React",
-            "Node.js",
-            "PostgreSQL",
-            "MongoDB",
-            "REST APIs",
-            "Gemini AI",
-            "OpenAI API",
-            "Competitive Programming",
-            "System Design",
-          ]
-            .concat([
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "MongoDB",
-              "REST APIs",
-              "Gemini AI",
-              "OpenAI API",
-              "Competitive Programming",
-              "System Design",
-            ])
-            .map((item, index) => (
-              <span key={`${item}-${index}`}>{item}</span>
-            ))}
+          {[...tickerItems, ...tickerItems].map((item, index) => (
+            <span key={`${item}-${index}`}>{item}</span>
+          ))}
         </motion.div>
       </section>
 
@@ -554,6 +620,54 @@ function App() {
         <Reveal delay={0.1}>
           <ExperienceTimeline />
         </Reveal>
+      </section>
+
+      <section id="case-study" className="section case-study">
+        <Reveal className="section-heading">
+          <p className="section-kicker">Case study · Draviya</p>
+          <h2>Keeping a fast ledger and a blockchain in agreement.</h2>
+          <p className="case-lede">
+            At Draviya I worked on the core of a FinTech exchange. Trades had to
+            feel instant to users but also be settled on-chain. I built the
+            hybrid setup that makes both true: PostgreSQL is the fast ledger,
+            on-chain logic is the final record, and an event-driven settlement
+            layer keeps them in sync.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1} className="flow-card">
+          <p className="flow-caption">How a trade moves through the system</p>
+          <ol className="flow">
+            {draviyaFlow.map(({ icon: Icon, title, body }, index) => (
+              <li key={title} className="flow-step">
+                <span className="flow-num">{String(index + 1).padStart(2, "0")}</span>
+                <Icon size={20} />
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="flow-loop" aria-hidden="true">
+            <span>confirmed on-chain → ledger entry marked settled</span>
+          </div>
+          <div className="flow-legend">
+            <span><i className="dot dot-sync" /> Synchronous, in the user&apos;s request</span>
+            <span><i className="dot dot-async" /> Asynchronous, event-driven</span>
+          </div>
+        </Reveal>
+
+        <div className="decision-grid">
+          {draviyaDecisions.map(({ title, body }, index) => (
+            <Reveal key={title} delay={index * 0.08} className="decision-card">
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </Reveal>
+          ))}
+        </div>
+        <p className="case-note">
+          Product and business details are confidential; this covers only the
+          engineering pattern.
+        </p>
       </section>
 
       <section id="projects" className="section">
@@ -571,6 +685,8 @@ function App() {
               <img
                 className="project-image"
                 src={project.image}
+                loading="lazy"
+                decoding="async"
                 alt={`${project.name} project preview`}
               />
               <div className="project-meta">
@@ -622,6 +738,8 @@ function App() {
               <img
                 className="project-image"
                 src={project.image}
+                loading="lazy"
+                decoding="async"
                 alt={`${project.name} project preview`}
               />
               <div className="project-meta">
@@ -669,6 +787,12 @@ function App() {
             </Reveal>
           ))}
         </div>
+        <Reveal delay={0.2} className="core-cs">
+          <span className="core-cs-label">Core CS</span>
+          {coreCS.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </Reveal>
       </section>
 
       <section id="achievements" className="section proof-section">
@@ -696,12 +820,10 @@ function App() {
       <footer className="footer">
         <div>
           <p className="section-kicker">Available for</p>
-          <h2>Internships, full-stack work, and ambitious product builds.</h2>
+          <h2>Full-time SWE roles (2027), internships, and ambitious product builds.</h2>
         </div>
         <MagneticLink
           href={`mailto:${profile.email}?subject=Let%27s%20work%20together`}
-          target="_blank"
-          rel="noreferrer"
           className="primary-cta"
         >
           Let&apos;s talk <ArrowUpRight size={18} />
