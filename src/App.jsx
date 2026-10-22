@@ -18,6 +18,8 @@ import {
   FileText,
   Database,
   GraduationCap,
+  Check,
+  Copy,
   Mail,
   MapPin,
   Menu,
@@ -39,6 +41,7 @@ import tomatoImg from "./assets/tomato.webp";
 // import mindcureImg from "./assets/mindcure.png"; // re-enable with the Mindcure project
 import cryptoplaceImg from "./assets/cryptoplace.webp";
 import supportaiImg from "./assets/supportaiImg.webp";
+import avatarImg from "./assets/aditya-avatar.webp";
 
 const profile = {
   name: "Aditya Meena",
@@ -174,7 +177,8 @@ const projects = [
   {
     name: "The Films",
     year: "2024",
-    type: "Frontend Only - Movie Discovery Platform",
+    type: "Movie Discovery Platform",
+    scope: "Frontend",
     image: thefilmsImg,
     stack: "React, Tailwind CSS, Redux, TMDB API",
     impact: "Makes movie discovery easier with personalized recommendations.",
@@ -189,7 +193,8 @@ const projects = [
   {
     name: "Tomato",
     year: "2024",
-    type: "Frontend Only - Food Ordering Platform",
+    type: "Food Ordering Platform",
+    scope: "Frontend",
     image: tomatoImg,
     stack: "Next.js, React, Tailwind CSS, Figma",
     impact: "Streamlines food ordering with an intuitive checkout process.",
@@ -204,7 +209,8 @@ const projects = [
   // {
   //   name: "Mindcure",
   //   year: "2024",
-  //   type: "Frontend Only - Mental Health Resources",
+  //   type: "Mental Health Resources",
+  //   scope: "Frontend",
   //   image: mindcureImg, // also uncomment the import above
   //   stack: "React, Next.js, Tailwind CSS, Responsive UI",
   //   impact: "Provides accessible mental health resources for students.",
@@ -219,7 +225,8 @@ const projects = [
   {
     name: "Cryptoplace",
     year: "2024",
-    type: "Frontend Only - Crypto Market Tracker",
+    type: "Crypto Market Tracker",
+    scope: "Frontend",
     image: cryptoplaceImg,
     stack: "React, CoinGecko API, React Router, Google Charts",
     impact: "Simplifies crypto market tracking with real-time price updates.",
@@ -462,7 +469,42 @@ function ExperienceTimeline() {
   );
 }
 
+// Copies the email so it still works on machines with no mail app set up.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand("copy");
+    area.remove();
+    return ok;
+  }
+}
+
+function useCopyEmail() {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const copy = async () => {
+    if (!(await copyText(profile.email))) return;
+    setCopied(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), 2200);
+  };
+
+  return { copied, copy };
+}
+
 function App() {
+  const { copied, copy: copyEmail } = useCopyEmail();
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 130, damping: 24 });
@@ -479,7 +521,6 @@ function App() {
         icon: FaLinkedin,
         external: true,
       },
-      { href: profile.resume, label: "Resume", icon: FileText, external: true },
       {
         href: profile.leetcode,
         label: "LeetCode",
@@ -559,6 +600,14 @@ function App() {
             <MagneticLink href="#projects" className="primary-cta">
               View work <ArrowUpRight size={18} />
             </MagneticLink>
+            <MagneticLink
+              href={profile.resume}
+              className="secondary-cta"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FileText size={17} /> Resume
+            </MagneticLink>
             {contactLinks.map(({ href, label, icon: Icon, external }) => (
               <MagneticLink
                 key={label}
@@ -568,6 +617,7 @@ function App() {
                 title={label}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noreferrer" : undefined}
+                onClick={label === "Email" ? copyEmail : undefined}
               >
                 <Icon size={18} />
               </MagneticLink>
@@ -588,8 +638,22 @@ function App() {
               <span />
               <span />
             </div>
-            <p className="terminal-line">$ build --portfolio</p>
-            <p className="terminal-title">Software Engineer</p>
+            <p className="terminal-line">$ status --availability</p>
+            <div className="profile-row">
+              <img
+                className="avatar"
+                src={avatarImg}
+                alt="Aditya Meena"
+                width="130"
+                height="201"
+              />
+              <div>
+                <p className="terminal-title">Open to SWE roles</p>
+                <p className="terminal-sub">
+                  <span className="pulse" aria-hidden="true" /> B.Tech CSE, IIIT Ranchi · Class&nbsp;of&nbsp;2027
+                </p>
+              </div>
+            </div>
             <div className="terminal-grid">
               {stats.map(([number, label]) => (
                 <div key={label}>
@@ -614,8 +678,9 @@ function App() {
       </section>
 
       <section id="work" className="section experience-section">
-        <Reveal>
+        <Reveal className="section-heading">
           <p className="section-kicker">Experience</p>
+          <h2>Production code at a FinTech startup and an IT agency.</h2>
         </Reveal>
         <Reveal delay={0.1}>
           <ExperienceTimeline />
@@ -692,6 +757,7 @@ function App() {
               <div className="project-meta">
                 <span>{project.year}</span>
                 <span>{project.type}</span>
+                {project.scope && <span className="scope-chip">{project.scope}</span>}
               </div>
               <h3>{project.name}</h3>
               <p className="project-impact">{project.impact}</p>
@@ -745,6 +811,7 @@ function App() {
               <div className="project-meta">
                 <span>{project.year}</span>
                 <span>{project.type}</span>
+                {project.scope && <span className="scope-chip">{project.scope}</span>}
               </div>
               <h3>{project.name}</h3>
               <p className="project-impact">{project.impact}</p>
@@ -822,13 +889,27 @@ function App() {
           <p className="section-kicker">Available for</p>
           <h2>Full-time SWE roles (2027), internships, and ambitious product builds.</h2>
         </div>
-        <MagneticLink
-          href={`mailto:${profile.email}?subject=Let%27s%20work%20together`}
-          className="primary-cta"
-        >
-          Let&apos;s talk <ArrowUpRight size={18} />
-        </MagneticLink>
+        <div className="footer-actions">
+          <MagneticLink
+            href={`mailto:${profile.email}?subject=Let%27s%20work%20together`}
+            className="primary-cta"
+          >
+            Let&apos;s talk <ArrowUpRight size={18} />
+          </MagneticLink>
+          <button type="button" className="secondary-cta copy-email" onClick={copyEmail}>
+            {copied ? <Check size={17} /> : <Copy size={17} />}
+            {copied ? "Copied!" : profile.email}
+          </button>
+        </div>
       </footer>
+
+      <div className={copied ? "toast show" : "toast"} role="status" aria-live="polite">
+        {copied && (
+          <>
+            <Check size={16} /> Email copied: {profile.email}
+          </>
+        )}
+      </div>
     </main>
   );
 }

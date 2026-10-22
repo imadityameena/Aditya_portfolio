@@ -222,7 +222,7 @@ button {
 
 .hero-panel {
   position: relative;
-  min-height: 600px;
+  min-height: 700px;
   perspective: 1200px;
 }
 
@@ -257,7 +257,7 @@ button {
 
 .terminal-card {
   position: absolute;
-  inset: 86px 0 0 auto;
+  inset: 86px 0 auto auto;
   width: min(430px, 100%);
   min-height: 430px;
   padding: 18px;
@@ -288,7 +288,7 @@ button {
 
 .terminal-title {
   max-width: 330px;
-  margin: 14px 0 42px;
+  margin: 14px 0 12px;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   line-height: 0.97;
@@ -619,7 +619,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 62px;
+  margin-bottom: 30px;
 }
 
 .project-meta span,
@@ -636,8 +636,8 @@ button {
 }
 
 .project-card h3 {
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
-  line-height: 0.92;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 0.95;
 }
 
 .project-impact {
@@ -918,8 +918,9 @@ button {
     margin-top: 30px;
   }
 
-  .terminal-grid {
-    grid-template-columns: 1fr;
+  .terminal-grid div {
+    min-height: 0;
+    padding: 14px;
   }
 
   .timeline-head {
@@ -949,6 +950,166 @@ button {
   .footer {
     padding: 28px;
   }
+}
+
+/* ---------- hero extras ---------- */
+.secondary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--soft);
+  font-weight: 700;
+  transition: border-color 220ms ease, background 220ms ease;
+}
+
+.secondary-cta:hover {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+}
+
+.terminal-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.pulse {
+  position: relative;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(3); opacity: 0; }
+}
+
+.project-meta .scope-chip {
+  color: var(--muted);
+  border-style: dashed;
+}
+
+/* ---------- avatar + copy email ---------- */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 14px 0 30px;
+}
+
+.profile-row .terminal-title {
+  margin: 0 0 10px;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.profile-row .terminal-sub {
+  margin: 0;
+}
+
+.avatar {
+  flex: none;
+  width: 130px;
+  height: 201px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+}
+
+@media (max-width: 560px) {
+  .profile-row {
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 148px;
+    border-radius: 10px;
+  }
+
+  .profile-row .terminal-title {
+    font-size: 1.6rem;
+  }
+
+  .profile-row .terminal-sub {
+    font-size: 0.8rem;
+  }
+}
+
+.footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-actions > * {
+  justify-content: center;
+}
+
+.footer .copy-email {
+  border-color: rgba(5,5,5,0.2);
+  background: transparent;
+  color: #050505;
+}
+
+.footer .copy-email:hover {
+  border-color: rgba(5,5,5,0.5);
+  background: rgba(5,5,5,0.05);
+}
+
+.copy-email {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(16px);
+  color: var(--ink);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* ---------- Draviya case study ---------- */
