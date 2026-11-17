@@ -38,7 +38,7 @@ import quickchatImg from "./assets/quickchat.webp";
 import chefaiImg from "./assets/chefAi.webp";
 import thefilmsImg from "./assets/thefilms.webp";
 import tomatoImg from "./assets/tomato.webp";
-// import mindcureImg from "./assets/mindcure.png"; // re-enable with the Mindcure project
+// import mindcureImg from "./assets/mindcure.png";
 import cryptoplaceImg from "./assets/cryptoplace.webp";
 import supportaiImg from "./assets/supportaiImg.webp";
 import avatarImg from "./assets/aditya-avatar.webp";
@@ -55,7 +55,7 @@ const profile = {
   resume:
     "https://drive.google.com/file/d/1QeEDkAqHeIunOkBjbTqN_HN8sxsOWA4B/view?usp=sharing",
   summary:
-    "Full-stack developer with production internship experience building MERN and PostgreSQL applications, AI integrations, REST APIs, and polished web systems.",
+    "Full-stack developer. I've built MERN and PostgreSQL apps, REST APIs and AI features during my internships and side projects.",
 };
 
 const stats = [
@@ -125,24 +125,6 @@ const tickerItems = [
 
 const projects = [
   {
-    name: "SupportAI",
-    year: "2026",
-    type: "Multi-tenant AI Customer Support",
-    image: supportaiImg,
-    stack:
-      "Next.js, React, TypeScript, MongoDB, Mongoose, Gemini, Scalekit, Tailwind",
-    impact:
-      "Turns any website into an AI-staffed support desk via an embeddable widget — deployed with a single script tag, no code required.",
-    points: [
-      "Multi-tenant architecture keeps every business's FAQs, policies, and chatbot config fully isolated",
-      "Knowledge-grounded prompting keeps Gemini answering only from verified business data, no hallucinated policies",
-      "Scalekit-authenticated dashboard with token-based sessions and route protection",
-      "CORS-enabled chat API with cached MongoDB connections and automatic retry on AI failures",
-    ],
-    github: "https://github.com/imadityameena/SupportAI",
-    live: "https://support-ai-self.vercel.app/",
-  },
-  {
     name: "Prescripto",
     year: "2025",
     type: "Doctor Appointment System",
@@ -173,6 +155,21 @@ const projects = [
     ],
     github: "https://github.com/imadityameena/chefai",
     live: "https://chef-ai-xqr8.vercel.app/",
+  },
+  {
+    name: "QuickChat",
+    year: "2024",
+    type: "Real-time Messaging App",
+    image: quickchatImg,
+    stack: "React, Socket.io, Node.js, Express",
+    impact: "Eliminates delay in team communication with instant messaging.",
+    points: [
+      "Socket.io WebSocket architecture delivers messages instantly across connected clients",
+      "Real-time message synchronization keeps conversations consistent without refreshes",
+      "Queueing and retry logic preserves message order during unstable network conditions",
+    ],
+    github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
+    live: "https://quick-chat-azure.vercel.app/login",
   },
   {
     name: "The Films",
@@ -211,7 +208,7 @@ const projects = [
   //   year: "2024",
   //   type: "Mental Health Resources",
   //   scope: "Frontend",
-  //   image: mindcureImg, // also uncomment the import above
+  //   image: mindcureImg,
   //   stack: "React, Next.js, Tailwind CSS, Responsive UI",
   //   impact: "Provides accessible mental health resources for students.",
   //   points: [
@@ -242,20 +239,23 @@ const projects = [
 
 const buildingProjects = [
   {
-    name: "QuickChat",
+    name: "SupportAI",
     status: "Under maintenance",
-    year: "2024",
-    type: "Real-time Messaging App",
-    image: quickchatImg,
-    stack: "React, Socket.io, Node.js, Express",
-    impact: "Eliminates delay in team communication with instant messaging.",
+    year: "2026",
+    type: "Multi-tenant AI Customer Support",
+    image: supportaiImg,
+    stack:
+      "Next.js, React, TypeScript, MongoDB, Mongoose, Gemini, Scalekit, Tailwind",
+    impact:
+      "An AI support chatbot that any business can add to their website by pasting one script tag.",
     points: [
-      "Socket.io WebSocket architecture delivers messages instantly across connected clients",
-      "Real-time message synchronization keeps conversations consistent without refreshes",
-      "Queueing and retry logic preserves message order during unstable network conditions",
+      "Multi-tenant setup where each business's data and chatbot settings are kept separate",
+      "Gemini only answers from the FAQs and policies the business uploads, so it doesn't make things up",
+      "Scalekit-authenticated dashboard with token-based sessions and route protection",
+      "CORS-enabled chat API with cached MongoDB connections and automatic retry on AI failures",
     ],
-    github: "https://github.com/imadityameena/QuickChat-A-chatting-app",
-    live: "https://quick-chat-azure.vercel.app/login",
+    github: "https://github.com/imadityameena/SupportAI",
+    live: "https://support-ai-self.vercel.app/",
   },
 ];
 
@@ -287,8 +287,6 @@ const experiences = [
   },
 ];
 
-// Draviya case study. Kept to architecture level on purpose: the company's
-// product, pricing, and legal design are under NDA and must not appear here.
 const draviyaFlow = [
   {
     icon: ShieldCheck,
@@ -313,26 +311,26 @@ const draviyaFlow = [
   {
     icon: Link2,
     title: "On-chain logic",
-    body: "Final record of ownership; confirmation is written back to the ledger.",
+    body: "The final record. Once it confirms, the ledger entry is updated.",
   },
 ];
 
 const draviyaDecisions = [
   {
-    title: "Ledger first, chain second",
-    body: "Users see balances update instantly from PostgreSQL, while the chain settles in the background. The app stays fast even when the network is slow.",
+    title: "Why balances live in PostgreSQL",
+    body: "Waiting for the chain on every trade would make the app feel slow. So users see their balance from PostgreSQL right away and the on-chain part happens in the background.",
   },
   {
-    title: "One transaction, no drift",
-    body: "The balance update and its settlement event commit together. If either fails, both roll back, so the ledger never shows a trade that was never queued for settlement.",
+    title: "Saving the trade and the event together",
+    body: "The balance update and the settlement event are written in the same database transaction. If one fails, neither is saved, so the two can't get out of sync.",
   },
   {
-    title: "Events make retries safe",
-    body: "Settlement runs off events, not inline in the request. A failed on-chain call is retried from the pending event instead of being lost or applied twice.",
+    title: "Retrying failed settlements",
+    body: "Settlement doesn't run inside the user's request. If an on-chain call fails, the worker picks the pending event up again instead of the trade getting lost.",
   },
   {
-    title: "Compliance at the door",
-    body: "KYC/AML runs before trading is unlocked, so every ledger entry belongs to a verified identity from day one.",
+    title: "KYC before trading",
+    body: "Trading only unlocks after KYC/AML checks pass, so every account in the ledger is a verified user.",
   },
 ];
 
@@ -469,7 +467,6 @@ function ExperienceTimeline() {
   );
 }
 
-// Copies the email so it still works on machines with no mail app set up.
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -680,7 +677,7 @@ function App() {
       <section id="work" className="section experience-section">
         <Reveal className="section-heading">
           <p className="section-kicker">Experience</p>
-          <h2>Production code at a FinTech startup and an IT agency.</h2>
+          <h2>Where I've worked.</h2>
         </Reveal>
         <Reveal delay={0.1}>
           <ExperienceTimeline />
@@ -690,13 +687,12 @@ function App() {
       <section id="case-study" className="section case-study">
         <Reveal className="section-heading">
           <p className="section-kicker">Case study · Draviya</p>
-          <h2>Keeping a fast ledger and a blockchain in agreement.</h2>
+          <h2>Keeping the ledger and the blockchain in sync.</h2>
           <p className="case-lede">
-            At Draviya I worked on the core of a FinTech exchange. Trades had to
-            feel instant to users but also be settled on-chain. I built the
-            hybrid setup that makes both true: PostgreSQL is the fast ledger,
-            on-chain logic is the final record, and an event-driven settlement
-            layer keeps them in sync.
+            At Draviya I worked on the backend of a FinTech exchange. Trades
+            needed to show up instantly for users but also had to be settled
+            on-chain. I used PostgreSQL as the ledger users see, on-chain logic
+            as the final record, and event-driven settlement to connect the two.
           </p>
         </Reveal>
 
@@ -730,15 +726,15 @@ function App() {
           ))}
         </div>
         <p className="case-note">
-          Product and business details are confidential; this covers only the
-          engineering pattern.
+          I can&apos;t share product details because of an NDA, so this only
+          covers the engineering side.
         </p>
       </section>
 
       <section id="projects" className="section">
         <Reveal className="section-heading">
           <p className="section-kicker">Selected projects</p>
-          <h2>Interfaces with backends that actually do the hard work.</h2>
+          <h2>Things I&apos;ve built.</h2>
         </Reveal>
         <div className="project-grid">
           {projects.map((project, index) => (
@@ -839,7 +835,7 @@ function App() {
       <section id="skills" className="section skills-section">
         <Reveal className="section-heading">
           <p className="section-kicker">Stack</p>
-          <h2>A practical toolkit for full-stack product engineering.</h2>
+          <h2>What I work with.</h2>
         </Reveal>
         <div className="skill-grid">
           {skills.map(({ icon: Icon, label, items }, index) => (
@@ -887,7 +883,7 @@ function App() {
       <footer className="footer">
         <div>
           <p className="section-kicker">Available for</p>
-          <h2>Full-time SWE roles (2027), internships, and ambitious product builds.</h2>
+          <h2>Full-time SWE roles from 2027, internships and freelance projects.</h2>
         </div>
         <div className="footer-actions">
           <MagneticLink
