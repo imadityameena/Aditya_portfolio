@@ -241,27 +241,7 @@ const projects = [
   //   live: "https://mental-health-app-nu-three.vercel.app/",
   // },
   {
-    name: "Cryptoplace",
-    year: "2024",
-    type: "Crypto Market Tracker",
-    scope: "Frontend",
-    image: cryptoplaceImg,
-    stack: "React, CoinGecko API, React Router, Google Charts",
-    impact: "Simplifies crypto market tracking with real-time price updates.",
-    points: [
-      "CoinGecko integration powers current market data and interactive price charts",
-      "Debounced search makes it fast to find assets across more than 1,000 cryptocurrencies",
-      "React.memo and controlled updates reduce unnecessary renders during frequent price changes",
-    ],
-    github: "https://github.com/imadityameena/cryptoplace",
-    live: "https://cryptoplace-dusky.vercel.app/",
-  },
-];
-
-const buildingProjects = [
-  {
     name: "Tomato",
-    status: "Under maintenance",
     year: "2024",
     type: "Food Ordering Platform",
     scope: "Frontend",
@@ -275,6 +255,26 @@ const buildingProjects = [
     ],
     github: "https://github.com/imadityameena/Food-delivery",
     live: "https://food-delivery-project-63r5.vercel.app/",
+  },
+];
+
+const buildingProjects = [
+  {
+    name: "Cryptoplace",
+    status: "Under maintenance",
+    year: "2024",
+    type: "Crypto Market Tracker",
+    scope: "Frontend",
+    image: cryptoplaceImg,
+    stack: "React, CoinGecko API, React Router, Google Charts",
+    impact: "Simplifies crypto market tracking with real-time price updates.",
+    points: [
+      "CoinGecko integration powers current market data and interactive price charts",
+      "Debounced search makes it fast to find assets across more than 1,000 cryptocurrencies",
+      "React.memo and controlled updates reduce unnecessary renders during frequent price changes",
+    ],
+    github: "https://github.com/imadityameena/cryptoplace",
+    live: "https://cryptoplace-dusky.vercel.app/",
   },
 ];
 
