@@ -41,6 +41,7 @@ import tomatoImg from "./assets/tomato.webp";
 // import mindcureImg from "./assets/mindcure.png";
 import cryptoplaceImg from "./assets/cryptoplace.webp";
 import supportaiImg from "./assets/supportaiImg.webp";
+import sfsImg from "./assets/sfs.webp";
 import avatarImg from "./assets/aditya-avatar.webp";
 
 const profile = {
@@ -125,6 +126,42 @@ const tickerItems = [
 
 const projects = [
   {
+    name: "SFS",
+    year: "2026",
+    type: "End-to-end Encrypted File Storage",
+    image: sfsImg,
+    stack:
+      "React, Node, Express, MongoDB, Web Crypto API, GitHub OAuth, JWT, Backblaze B2",
+    impact:
+      "Cloud storage where files are encrypted in the browser, so the server only ever stores ciphertext it can't read.",
+    points: [
+      "Each file gets its own AES-256-GCM key, which is wrapped with the user's RSA-OAEP 3072 public key",
+      "The private key is locked with a passphrase via PBKDF2 (600k iterations) and the passphrase never reaches the server",
+      "File names are encrypted too, and GCM rejects any file that was changed in storage",
+      "Unit tests plus an end-to-end check that searches everything the server stored and finds no plaintext",
+    ],
+    github: "https://github.com/imadityameena/SFS",
+    live: "https://sfs-sben.onrender.com",
+  },
+  {
+    name: "SupportAI",
+    year: "2026",
+    type: "Multi-tenant AI Customer Support",
+    image: supportaiImg,
+    stack:
+      "Next.js, React, TypeScript, MongoDB, Mongoose, Gemini, Scalekit, Tailwind",
+    impact:
+      "An AI support chatbot that any business can add to their website by pasting one script tag.",
+    points: [
+      "Multi-tenant setup where each business's data and chatbot settings are kept separate",
+      "Gemini only answers from the FAQs and policies the business uploads, so it doesn't make things up",
+      "Scalekit-authenticated dashboard with token-based sessions and route protection",
+      "CORS-enabled chat API with cached MongoDB connections and automatic retry on AI failures",
+    ],
+    github: "https://github.com/imadityameena/SupportAI",
+    live: "https://support-ai-self.vercel.app/",
+  },
+  {
     name: "Prescripto",
     year: "2025",
     type: "Doctor Appointment System",
@@ -187,22 +224,6 @@ const projects = [
     github: "https://github.com/imadityameena/Movie-App",
     live: "https://movie-app-lac-psi.vercel.app/",
   },
-  {
-    name: "Tomato",
-    year: "2024",
-    type: "Food Ordering Platform",
-    scope: "Frontend",
-    image: tomatoImg,
-    stack: "Next.js, React, Tailwind CSS, Figma",
-    impact: "Streamlines food ordering with an intuitive checkout process.",
-    points: [
-      "Translated complete Figma flows into a responsive, production-ready ordering interface",
-      "Persistent cart state keeps selected items available as customers browse the menu",
-      "Pricing logic applies discounts consistently across cart and checkout totals",
-    ],
-    github: "https://github.com/imadityameena/Food-delivery",
-    live: "https://food-delivery-project-63r5.vercel.app/",
-  },
   // {
   //   name: "Mindcure",
   //   year: "2024",
@@ -239,23 +260,21 @@ const projects = [
 
 const buildingProjects = [
   {
-    name: "SupportAI",
+    name: "Tomato",
     status: "Under maintenance",
-    year: "2026",
-    type: "Multi-tenant AI Customer Support",
-    image: supportaiImg,
-    stack:
-      "Next.js, React, TypeScript, MongoDB, Mongoose, Gemini, Scalekit, Tailwind",
-    impact:
-      "An AI support chatbot that any business can add to their website by pasting one script tag.",
+    year: "2024",
+    type: "Food Ordering Platform",
+    scope: "Frontend",
+    image: tomatoImg,
+    stack: "Next.js, React, Tailwind CSS, Figma",
+    impact: "Streamlines food ordering with an intuitive checkout process.",
     points: [
-      "Multi-tenant setup where each business's data and chatbot settings are kept separate",
-      "Gemini only answers from the FAQs and policies the business uploads, so it doesn't make things up",
-      "Scalekit-authenticated dashboard with token-based sessions and route protection",
-      "CORS-enabled chat API with cached MongoDB connections and automatic retry on AI failures",
+      "Translated complete Figma flows into a responsive, production-ready ordering interface",
+      "Persistent cart state keeps selected items available as customers browse the menu",
+      "Pricing logic applies discounts consistently across cart and checkout totals",
     ],
-    github: "https://github.com/imadityameena/SupportAI",
-    live: "https://support-ai-self.vercel.app/",
+    github: "https://github.com/imadityameena/Food-delivery",
+    live: "https://food-delivery-project-63r5.vercel.app/",
   },
 ];
 
@@ -782,6 +801,7 @@ function App() {
         </div>
       </section>
 
+      {buildingProjects.length > 0 && (
       <section className="section building-section">
         <Reveal className="section-heading">
           <p className="section-kicker">Active projects</p>
@@ -831,6 +851,7 @@ function App() {
           ))}
         </div>
       </section>
+      )}
 
       <section id="skills" className="section skills-section">
         <Reveal className="section-heading">
